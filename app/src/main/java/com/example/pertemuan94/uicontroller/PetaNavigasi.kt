@@ -110,4 +110,10 @@ fun HostNavigasi(
                 }
             )
         ) {
-           
+            EditSiswaScreen(
+                navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() }
+            )
+        }
+    }
+}
