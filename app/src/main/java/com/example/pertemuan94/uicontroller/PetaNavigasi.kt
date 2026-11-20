@@ -86,4 +86,12 @@ fun HostNavigasi(
             )
         }
 
-        
+        composable(
+            route = DestinasiDetailSiswa.routeWithArgs,
+            arguments = listOf(
+                navArgument(DestinasiDetailSiswa.itemIdArg) {
+                    type = NavType.IntType
+                }
+            )
+        ) {
+            
