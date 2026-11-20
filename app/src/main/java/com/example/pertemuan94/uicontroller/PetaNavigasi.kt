@@ -80,3 +80,10 @@ fun HostNavigasi(
             )
         }
 
+        composable(DestinasiEntry.route) {
+            EntrySiswaScreen(
+                navigateBack = { navController.popBackStack() }
+            )
+        }
+
+        
