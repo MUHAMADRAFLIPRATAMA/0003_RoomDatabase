@@ -12,14 +12,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.pertemuan94.R
 import com.example.pertemuan94.view.DestinasiEntry
 import com.example.pertemuan94.view.DestinasiHome
+import com.example.pertemuan94.view.DetailSiswaScreen
+import com.example.pertemuan94.view.EditSiswaScreen
 import com.example.pertemuan94.view.EntrySiswaScreen
 import com.example.pertemuan94.view.HomeScreen
+import com.example.pertemuan94.view.route.DestinasiDetailSiswa
+import com.example.pertemuan94.view.route.DestinasiEditSiswa
 
 @Composable
 fun SiswaApp(navController: NavHostController = rememberNavController()) {
@@ -52,6 +58,7 @@ fun SiswaTopAppBar(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HostNavigasi(
     navController: NavHostController,
@@ -64,11 +71,12 @@ fun HostNavigasi(
     ) {
         composable(DestinasiHome.route) {
             HomeScreen(
-                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) }
+                navigateToItemEntry = {
+                    navController.navigate(DestinasiEntry.route)
+                },
+                navigateToItemUpdate = {
+                    navController.navigate("${DestinasiDetailSiswa.route}/$it")
+                }
             )
         }
-        composable(DestinasiEntry.route) {
-            EntrySiswaScreen(navigateBack = { navController.popBackStack() })
-        }
-    }
-}
+
